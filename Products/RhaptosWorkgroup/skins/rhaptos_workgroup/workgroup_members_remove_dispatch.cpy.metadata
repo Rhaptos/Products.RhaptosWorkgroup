@@ -1,0 +1,7 @@
+[default]
+title=Workgroup member delete dispatch
+
+[actions]
+action.success = traverse_to:string:workgroup_members_remove_confirm
+action.delete = traverse_to:string:workgroup_delete_form
+action.leave = traverse_to:string:workgroup_exit_form

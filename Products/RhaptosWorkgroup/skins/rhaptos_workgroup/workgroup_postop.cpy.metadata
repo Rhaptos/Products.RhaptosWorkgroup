@@ -1,0 +1,3 @@
+[actions]
+action.home=redirect_to:string:mycnx
+action.manage=redirect_to:string:manageworkgroups

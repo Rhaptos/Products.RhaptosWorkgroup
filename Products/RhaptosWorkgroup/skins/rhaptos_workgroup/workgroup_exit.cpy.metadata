@@ -1,0 +1,5 @@
+[default]
+title=Exit Workgroup
+
+[actions]
+action.success = traverse_to:string:workgroup_postop

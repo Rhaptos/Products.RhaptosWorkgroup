@@ -1,0 +1,57 @@
+<!DOCTYPE html PUBLIC  "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<tal:wrap
+      xmlns:metal="http://xml.zope.org/namespaces/metal" 
+      xmlns:tal="http://xml.zope.org/namespaces/tal" 
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      tal:define="default_tab string:members"
+      i18n:domain="rhaptos">
+<html xml:lang="en-US" lang="en-US"
+      xmlns="http://www.w3.org/1999/xhtml"
+      metal:use-macro="context/main_template/macros/master">
+
+<tal:comment tal:replace="nothing">
+CNX note: 
+  no change.
+</tal:comment>
+
+  <div metal:fill-slot="content_title_header">
+      <metal:title metal:use-macro="context/workspace_contents/macros/workspacetitle">Workyspacement</metal:title>
+  </div>
+
+  <div metal:fill-slot="main">
+
+    <div class="return-link">
+      <a href="workgroup_members" i18n:translate="link_wg_return_to_members">
+        &#171; Return to membership page for
+        <span i18n:name="name" tal:content="context/Title">Music Theory</span>
+      </a>
+    </div>
+
+    <h2 i18n:translate="heading_workgroup_exit">Leave Workgroup</h2>
+
+    <p i18n:translate="text_leave_workgroup">
+      You are about to leave this workgroup.  
+      <span i18n:name="not_rejoin_warning">
+	<strong>
+	  <em i18n:translate="text_workgroup_not_rejoin_warning">You
+	    will not be able to rejoin</em>
+	</strong> 
+      </span> this group unless added by another group member. Are
+      you sure you want to do this?
+    </p>
+    <form action="." method="post" name="exit"
+          tal:attributes="action template/getId">
+      <input type="submit" class="destructive"
+        name="form.button.leave"
+	value="Yes, Leave"
+	i18n:attributes="value value_workgroup_yes_leave"/>
+      <input type="submit" class="standalone" 
+        name="form.button.cancel"
+	value="No, Cancel" 
+	i18n:attributes="value value_workgroup_no_cancel"/>
+      <input type="hidden" name="form.submitted" value="1" />
+    </form>
+  </div>
+
+</html>
+</tal:wrap>

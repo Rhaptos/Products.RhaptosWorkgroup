@@ -1,0 +1,183 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+ "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US"
+      lang="en-US"
+      xmlns:metal="http://xml.zope.org/namespaces/metal" 
+      xmlns:tal="http://xml.zope.org/namespaces/tal" 
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      i18n:domain="rhaptos"
+      metal:use-macro="context/main_template/macros/master">
+
+<tal:comment tal:replace="nothing">
+CNX note: 
+  now using Plone 2 form widgets
+</tal:comment>
+
+  <body>
+
+  <div metal:fill-slot="content_title_header">
+      <metal:title metal:use-macro="context/workspace_contents/macros/workspacetitle">Workyspacement</metal:title>
+  </div>
+
+    <div metal:fill-slot="main"
+         tal:define="errors options/state/getErrors;
+                     gtool context/portal_groups;
+                     gdtool context/portal_groupdata;
+                     group python:gtool.getGroupById(context.getId());">
+
+      <h2 i18n:translate="heading_workgroup_properties">Workgroup properties </h2>
+      
+      <form class="group"
+            action="."
+            name="groups"
+            method="post"
+            tal:attributes="action string:${context/getId}/${template/getId}">
+            
+      
+	<input tal:condition="group | nothing"
+	       tal:attributes="value group/getGroupName"
+               type="hidden" name="groupname" value="" />
+
+	<!--<div class="row"
+             tal:define="error_groupname errors/groupname| nothing;
+	                 groupname request/groupname | group/getId | nothing;">
+            
+            <div class="label required">
+                <span i18n:translate="">Group ID</span>
+                <div id="groupname_help" 
+                     i18n:translate=""
+                     class="help" 
+                     style="visibility:hidden">Enter a unique ID for the group here</div>
+            </div>
+            
+            <div class="field"
+                  tal:attributes="class python:test(error_groupname, 'field error', 'field')" >
+
+                <div tal:condition="error_groupname">
+                    <tal:block content="error_groupname">Error</tal:block>
+                    <br />
+                </div>
+	      
+	      <input type="text" 
+                       name="groupname" 
+                       size="30"
+                       value="groupname"
+                       tabindex=""
+                       onfocus="formtooltip('groupname_help',1)" 
+                       onblur="formtooltip('groupname_help',0)" 
+                       tal:attributes="value groupname;
+                                       tabindex tabindex/next;"
+                       />
+	      <span tal:condition="groupname | nothing" tal:replace="groupname" />
+
+            </div>
+      </div>-->
+      
+            <div class="field"
+                 tal:define="error errors/title | nothing;
+                             grouptitle python:group.getProperty('title');
+                             title request/title | grouptitle | nothing;"
+                 tal:attributes="class python:test(error, 'field error', 'field')">
+    
+                <label for="title" i18n:translate="label_workgroup_name">Name</label>
+    
+                <span class="fieldRequired" title="Required"
+                      i18n:attributes="title title_required"
+                      i18n:translate="label_required">(Required)</span>
+    
+                <div class="formHelp" i18n:translate="help_enter_workgroup_name">
+                   Enter a name for the workgroup.
+                </div>
+                
+            <div tal:content="error"
+              i18n:translate="">Validation error output</div>
+    
+                <input type="text"
+                       id="title"
+                       name="title"
+                       size="30"
+                       tabindex=""
+                       value="member.title html_quote"
+                       tal:attributes="value title;
+                                       tabindex tabindex/next;"
+                       />
+    
+            </div>
+
+            
+            <div class="field"
+                 tal:define="error errors/email | nothing;
+                             groupemail python:group.getProperty('email');
+                             email request/email | groupemail | nothing;"
+                 tal:attributes="class python:test(error, 'field error', 'field')">
+    
+                <label for="email" i18n:translate="label_workgroup_email">Email</label>
+    
+                <div class="formHelp" i18n:translate="help_enter_workgroup_email">
+                     If there is a common email address (like a mailing list) shared by all workgroup members, enter it here.
+                </div>
+                
+            <div tal:content="error"
+              i18n:translate="">Validation error output</div>
+    
+                <input type="text"
+                       id="email"
+                       name="email"
+                       size="30"
+                       tabindex=""
+                       value="member.email html_quote"
+                       tal:attributes="value email;
+                                       tabindex tabindex/next;"
+                       />
+    
+            </div>
+          
+          <div class="field"
+               tal:define="error errors/description | nothing;
+                           groupdescription python:group.getProperty('description');
+                           description request/description | groupdescription | nothing;">
+
+            <label for="description" i18n:translate="label_workgroup_description">Description</label>
+
+            <div class="formHelp" i18n:translate="help_enter_workgroup_description">
+              Enter a description of purpose for this workgroup.
+            </div>
+
+            <textarea cols="40"
+                      rows="5"
+                      tabindex=""
+                      id="description"
+                      name="description"
+                      tal:content="description"
+                      tal:attributes="tabindex tabindex/next;"
+                      >
+              Description
+            </textarea>
+          </div>
+
+            <div class="formControls">
+                <input class="context"
+                       tabindex=""
+                       type="submit"
+                       value="Update"
+                       name="form.button.Save"
+                       i18n:attributes="value value_save"
+                       tal:attributes="tabindex tabindex/next;"
+                       />
+<!--
+                <input class="standalone"
+                       tabindex=""
+                       type="submit"
+                       value="Cancel"
+                       name="form.button.Cancel"
+                       i18n:attributes="value value_cancel"
+                       tal:attributes="tabindex tabindex/next;"
+                       />
+-->
+            </div>
+
+	<input type="hidden" name="form.submitted" value="1" />
+      </form>
+    </div>
+  </body>
+</html>

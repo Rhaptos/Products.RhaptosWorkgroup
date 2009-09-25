@@ -1,0 +1,9 @@
+[default]
+title=Create a Workgroup
+
+[validators]
+validators = validate_workgroup
+
+[actions]
+action.success = traverse_to:string:workgroup_edit
+action.failure = traverse_to:string:create_workgroup

@@ -1,0 +1,96 @@
+RhaptosWorkgroup-0.20
+  - Module Edit Workflow (DATE) [reinstall reqd (@Upgrades/upWorkspace-Mew-Phase-1.zctl)]
+    - new manageworkgroups page
+    - getWorkspaces script moved here, made general workgroup info view script
+    - workgroup leave and delete goes to new manage workgroups page if >1 WG, MyCNX otherwise
+    - new custom template workspace_properties.cpt for properties, replacing folder_edit_form
+      - minor UI changes
+    - #8722: CMFFormController customizations for folder_*.cpy in GenericSetup, formerly of
+      RhaptosSite; requires reinstall
+
+RhaptosWorkgroup-0.19.1
+  - fix wording on WG members page: myself -> me. fix #8470
+
+RhaptosWorkgroup-0.19
+  - use the 'status' field to not show 'Pending' accounts for adding to WG
+  - increase info about accounts found for addition: show id and email
+
+RhaptosWorkgroup-0.18
+  - upgrade to Plone 2.5
+
+RhaptosWorkgroup-0.17.1
+  - implement getWorkgroupId so all searches can be workgroup sensitive
+
+RhaptosWorkgroup-0.17
+  - i18n Translation Support
+  - Change the action after a delete to a redirect instead of a
+    traverse to fix a bug where you still have the context of the
+    deleted workgroup after the delete
+
+RhaptosWorkgroup-0.16
+  - modified Danish translation for deletion of workgroup (bugday, cbearden)
+  - added 'remove myself from this workgroup' button (task 1503, bugday, kclarks)
+
+RhaptosWorkgroup-0.15
+  - Changed author names to link to the new member profile page
+
+RhaptosWorkgroup-0.14
+  - Renamed Product
+
+RisaWorkgroup-0.13
+  - Converted workgroup exit and delete into FormController scripts (#1430)
+  - Use member_catalog to speed up member searches
+
+RisaWorkgroup-0.12
+  - Updated with license info
+  - Removed unused template
+
+RisaWorkgroup-0.11
+  - Removed references to Connexions
+  - Moved some skin files from CNXPloneSite here
+
+RisaWorkgroup-0.10
+  - Marked up code for translation
+  - Added the Danish translation
+  - Removed unused DEFAULT_LICENSES reference
+  - Work with (and require) Plone2
+
+RisaWorkgroup-0.9
+  - Fix for bug 1609: when emailing a group, use the group email if
+  it's there
+  - Fix for bug 1414: folder_rename should go back to workspace_contents
+
+RisaWorkgroup-0.8.2
+  - More speed improvements
+
+RisaWorkgroup-0.8.1
+  - Speed improvement to member search over 0.8
+
+RisaWorkgroup-0.8
+  - Improvements to members search page: 
+    * all/none checkbox
+    * don't display existing members
+    * retain search term in search box
+
+RisaWorkgroup-0.7
+  - Converted to CMF, removing a lot of functionality that is now
+  handled by other tools (eg. adding/removing files)
+
+RisaWorkgroup-0.6
+  - Display entities in module titles correctly
+
+RisaWorkgroup-0.5
+  - New module creation mechanism:
+    * Show license selection page
+    * Use RisaModuleEditor instead of ZClass RisaModule
+    * New contents method gets POSTed to when creating modules (very
+    RESTful)
+    * misc ZPT updates/cleanups
+
+RisaWorkgroup-0.4
+  - Make sure pressing 'Enter' in child search form actually does a
+  search
+
+
+RisaWorkgroup-0.3
+  - First basic license support: initialize licensors to authors

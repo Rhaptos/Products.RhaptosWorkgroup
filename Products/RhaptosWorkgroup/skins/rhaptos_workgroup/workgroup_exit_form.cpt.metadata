@@ -1,0 +1,7 @@
+[default]
+title=Leave workgroup
+
+[actions]
+action.success=traverse_to:string:workgroup_members
+action.success..leave=traverse_to:string:workgroup_exit
+action.success..cancel=redirect_to_action:string:members

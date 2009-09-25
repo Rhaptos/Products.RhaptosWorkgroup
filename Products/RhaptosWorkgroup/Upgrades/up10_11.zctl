@@ -1,0 +1,28 @@
+from Products.RhaptosWorkgroup import Workgroup
+from Products.CMFCore.TypesTool import ContentFactoryMetadata
+from Products.CMFCore.utils import getToolByName
+
+portal = app.plone
+
+# Setup the types tool
+typestool = getToolByName(portal, 'portal_types')
+for t in Workgroup.factory_type_information:
+    if t['id'] not in typestool.objectIds():
+        cfm = apply(ContentFactoryMetadata, (), t)
+        typestool._setObject(t['id'], cfm)
+
+# Configure the groups tool
+groups_tool = getToolByName(portal, 'portal_groups')
+groups_tool.setGroupWorkspaceType('Workgroup')
+
+# Configure allowed content types
+wg = getattr(typestool, 'Workgroup')
+wg.manage_changeProperties(immediate_view='folder_contents',
+                           filter_content_types=1,
+                           allowed_content_types=('File', 'Image', 'Module', 'Collection'))
+
+# No workflow for Workgroups
+wf_tool = getToolByName(portal,'portal_workflow')
+wf_tool.setChainForPortalTypes(['Workgroup'],'')
+
+get_transaction().commit()
