@@ -1,4 +1,8 @@
 <?xml version="1.0"?>
 <import-steps>
-  <!-- intentionally left blank; uses steps already registered -->
+  <import-step id="rhaptos-workgroup" version="20090925-01"
+      handler="Products.RhaptosWorkgroup.setuphandlers.setupWorkgroups"
+      title="Setup Workgroups">
+      Setup Workgroups
+  </import-step>
 </import-steps>

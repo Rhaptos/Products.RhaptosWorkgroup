@@ -15,8 +15,6 @@ from Products.CMFCore.DirectoryView import registerDirectory
 from Products.Archetypes.public import process_types, listTypes
 from Products.CMFCore import utils
 
-from Products.GenericSetup import BASE, EXTENSION
-from Products.GenericSetup import profile_registry
 from Products.CMFPlone.interfaces.siteroot import IPloneSiteRoot
 
 from config import PROJECTNAME, ADD_CONTENT_PERMISSION
@@ -62,10 +60,3 @@ def initialize(context):
         fti                = ftis,
         ).initialize(context)
 
-    profile_registry.registerProfile('rhaptos-default',
-                                     'RhaptosWorkgroup',
-                                     'Extension profile for a RhaptosSite',
-                                     'profiles/default',
-                                     'RhaptosWorkgroup',
-                                     EXTENSION,
-                                     for_=IPloneSiteRoot)

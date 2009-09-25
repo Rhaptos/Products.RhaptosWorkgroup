@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<object name="Workgroup"
+   meta_type="Factory-based Type Information with dynamic views"
+   xmlns:i18n="http://xml.zope.org/namespaces/i18n">
+ <property name="title">Workgroup</property>
+ <property
+    name="description">A folder which can contain other items.</property>
+ <property name="content_icon">group.gif</property>
+ <property name="content_meta_type">WorkgroupAT</property>
+ <property name="product">RhaptosWorkgroup</property>
+ <property name="factory">addATWorkgroup</property>
+ <property name="immediate_view">workspace_contents</property>
+ <property name="global_allow">True</property>
+ <property name="filter_content_types">True</property>
+ <property name="allowed_content_types">
+  <element value="Module"/>
+  <element value="UnifiedFile"/>
+  <element value="Collection"/>
+ </property>
+ <property name="allow_discussion">False</property>
+ <property name="default_view">workspace_contents</property>
+ <property name="view_methods">
+  <element value="workspace_contents"/>
+ </property>
+ <property name="default_view_fallback">False</property>
+ <alias from="(Default)" to="(dynamic view)"/>
+ <alias from="contents" to="workspace_contents"/>
+ <alias from="edit" to="workspace_contents"/>
+ <alias from="index.html" to="(dynamic view)"/>
+ <alias from="properties" to="workgroup_properties"/>
+ <alias from="view" to="(selected layout)"/>
+ <action title="Contents" action_id="view" category="object" condition_expr=""
+    url_expr="string:${object_url}/workspace_contents" visible="True">
+  <permission value="View"/>
+ </action>
+ <action title="Properties" action_id="properties" category="object"
+    condition_expr="" url_expr="string:${object_url}/workgroup_properties"
+    visible="True">
+  <permission value="View"/>
+ </action>
+ <action title="Members" action_id="members" category="object"
+    condition_expr="" url_expr="string:${object_url}/workgroup_members"
+    visible="True">
+  <permission value="View"/>
+ </action>
+</object>
