@@ -1,6 +1,7 @@
 
 from Products.CMFCore.utils import getToolByName
 
+redirectscriptcontents="return context.manageworkgroups()"
 
 def setupWorkgroups(context):
     logger = context.getLogger('rhaptosworkgroup')
@@ -13,6 +14,7 @@ def setupWorkgroups(context):
     # turn on workspace creation
     portal_groups.groupWorkspacesCreationFlag = True
     # Create Group Workspaces folder if it doesn't exist
+    wgfolder = portal_groups.getGroupWorkspacesFolder()
     if wgfolder is None:
         pt = getToolByName(portal, 'portal_types')
         pt.constructContent(
