@@ -16,6 +16,7 @@ def setupWorkgroups(context):
     # Create Group Workspaces folder if it doesn't exist
     wgfolder = portal_groups.getGroupWorkspacesFolder()
     if wgfolder is None:
+        portal_groups.setGroupWorkspacesFolder('GroupWorkspaces', 'Workgroups')
         pt = getToolByName(portal, 'portal_types')
         pt.constructContent(
             type_name = 'Large Plone Folder',
