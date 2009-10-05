@@ -40,7 +40,7 @@ Workgroups</a>)</span>
             </a>
           </h2>
           <div class="edit_links"
-               tal:define="link string:$portal_url/${wg/link};
+               tal:define="link wg/link;
                            members wg/members;
                            mcount python:len(members)">
             <a href="workgroup_properties"

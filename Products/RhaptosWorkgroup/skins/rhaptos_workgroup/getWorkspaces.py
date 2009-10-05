@@ -33,7 +33,7 @@ for g in groups:
     gdict = {}
     if returnonly.has_key('id'):          gdict['id'] = groupname
     if returnonly.has_key('title'):       gdict['title'] = g.getGroupTitleOrName()
-    if returnonly.has_key('link'):        gdict['link'] = gfolder and gfolder.absolute_url(1) or None
+    if returnonly.has_key('link'):        gdict['link'] = gfolder and gfolder.absolute_url() or None
     if returnonly.has_key('contents'):    gdict['contents'] = gfolder and len(gfolder.contentIds()) or 0
     if returnonly.has_key('folder'):      gdict['folder'] = gfolder
     if returnonly.has_key('email'):       gdict['email'] = g.getProperty('email')
