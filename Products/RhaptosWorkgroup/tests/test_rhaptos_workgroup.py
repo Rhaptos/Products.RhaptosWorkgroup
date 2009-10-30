@@ -24,17 +24,21 @@ $Id: $
 """
 
 
+from Products.RhaptosTest import config
 import Products.RhaptosWorkgroup
+config.products_to_load_zcml = [('configure.zcml', Products.RhaptosWorkgroup),]
+config.products_to_install = ['RhaptosWorkgroup']
 
-from Products.RhaptosTest.base import RhaptosTestCase
+from Products.RhaptosTest import base
 
 
-class TestRhaptosWorkgroup(RhaptosTestCase):
+class TestRhaptosWorkgroup(base.RhaptosTestCase):
 
-    products_to_load_zcml = [('configure.zcml', Products.RhaptosWorkgroup),]
+    def afterSetUp(self):
+        pass
 
-    def setUp(self):
-        RhaptosTestCase.setUp(self)
+    def beforeTearDown(self):
+        pass
 
     def test_workgroup(self):
         self.assertEqual(1, 1)
