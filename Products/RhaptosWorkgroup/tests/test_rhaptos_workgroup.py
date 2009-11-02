@@ -28,6 +28,7 @@ from Products.RhaptosTest import config
 import Products.RhaptosWorkgroup
 config.products_to_load_zcml = [('configure.zcml', Products.RhaptosWorkgroup),]
 config.products_to_install = ['RhaptosWorkgroup']
+config.extension_profiles = ['Products.RhaptosWorkgroup:default']
 
 from Products.RhaptosTest import base
 
