@@ -47,7 +47,7 @@ class TestRhaptosWorkgroup(base.RhaptosTestCase):
         # workgroup.
         self.assertFalse(self.workgroup.title)
         self.assertFalse(self.workgroup.Title())
-        self.setTitle('bunk_title')
+        self.workgroup.setTitle('bunk_title')
         self.assertFalse(self.workgroup.title)
         self.assertFalse(self.workgroup.Title())
 
@@ -56,7 +56,7 @@ class TestRhaptosWorkgroup(base.RhaptosTestCase):
         # of the workgroup.
         self.assertFalse(self.workgroup.description)
         self.assertFalse(self.workgroup.Description())
-        self.setDescription('bunk_description')
+        self.workgroup.setDescription('bunk_description')
         self.assertFalse(self.workgroup.description)
         self.assertFalse(self.workgroup.Description())
 
