@@ -36,10 +36,29 @@ from Products.RhaptosTest import base
 class TestRhaptosWorkgroup(base.RhaptosTestCase):
 
     def afterSetUp(self):
-        pass
+        self.folder.invokeFactory('Workgroup', 'workgroup')
+        self.workgroup = self.folder.workgroup
 
     def beforeTearDown(self):
         pass
+
+    def test_workgroup_set_title(self):
+        # Make sure that setTitle doesn't actually modify the title of the
+        # workgroup.
+        self.assertFalse(self.workgroup.title)
+        self.assertFalse(self.workgroup.Title())
+        self.setTitle('bunk_title')
+        self.assertFalse(self.workgroup.title)
+        self.assertFalse(self.workgroup.Title())
+
+    def test_workgroup_set_description(self):
+        # Make sure that setDescription doesn't actually modify the description
+        # of the workgroup.
+        self.assertFalse(self.workgroup.description)
+        self.assertFalse(self.workgroup.Description())
+        self.setDescription('bunk_description')
+        self.assertFalse(self.workgroup.description)
+        self.assertFalse(self.workgroup.Description())
 
     def test_workgroup(self):
         self.assertEqual(1, 1)
