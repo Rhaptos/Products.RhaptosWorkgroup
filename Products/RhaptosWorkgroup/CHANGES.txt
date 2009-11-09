@@ -1,3 +1,7 @@
+RhaptosWorkgroup-0.21
+  - collection-structure-redesign-1 (Oct. 22, 2009)
+    - Updated links to help files
+
 RhaptosWorkgroup-0.20
   - Module Edit Workflow (DATE) [reinstall reqd (@Upgrades/upWorkspace-Mew-Phase-1.zctl)]
     - new manageworkgroups page

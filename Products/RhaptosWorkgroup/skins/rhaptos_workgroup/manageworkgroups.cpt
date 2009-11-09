@@ -18,7 +18,7 @@
       <h1 i18n:translate="header_manage_wgs">Manage Workgroups</h1>
 
       <div style="margin: 1.5em 0pt;" metal:define-macro="create">
-        <span style="float: right">(<a i18n:translate="label_createworkgroup_More" href="/help/reference/workgroups">More about 
+        <span style="float: right" tal:define="help nocall:portal/help/authoring/authorguide | nothing" tal:condition="nocall:help">(<a i18n:translate="label_createworkgroup_More" href="/help/authoring/authorguide#workgroups" tal:attributes="href string:${help/absolute_url}#workgroups">More about 
 Workgroups</a>)</span>
         <a href="create_workgroup"
            i18n:translate="link_create_new_wg"

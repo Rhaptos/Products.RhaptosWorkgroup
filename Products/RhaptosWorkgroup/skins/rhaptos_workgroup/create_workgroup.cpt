@@ -24,8 +24,10 @@ i18n by lizzardg
 
       <h1 i18n:translate="header_createworkgroup_create">Create a Workgroup</h1>
       <p i18n:translate="text_createworkgroup_collaborate">Workgroups give you a place to collaborate with others
-         (<span i18n:name="workgroups"><a i18n:translate="label_createworkgroup_more" href="/help/reference/workgroups">more about 
-workgroups</a></span>).</p>
+         <tal:help tal:define="help nocall:portal/help/authoring/authorguide | nothing" tal:condition="nocall:help">
+           (<span i18n:name="workgroups"><a i18n:translate="label_createworkgroup_more" href="/help/authoring/authorguide#workgroups" tal:attributes="href string:${help/absolute_url}#workgroups">more about 
+workgroups</a></span>)
+         </tal:help>.</p>
       
       <form class="group"
             action=""

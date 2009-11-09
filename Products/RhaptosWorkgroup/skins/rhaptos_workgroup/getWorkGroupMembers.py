@@ -1,4 +1,4 @@
-## Script (Python) "searchNonMembers"
+## Script (Python) "getWorkGroupMembers"
 ##bind container=container
 ##bind context=context
 ##bind namespace=
