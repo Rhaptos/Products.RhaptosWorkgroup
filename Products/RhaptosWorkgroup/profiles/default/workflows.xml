@@ -2,6 +2,7 @@
 <object name="portal_workflow" meta_type="Plone Workflow Tool">
  <bindings>
   <type type_id="Workgroup"/>
+  <type type_id="Workspace"/>
  </bindings>
 </object>
 
