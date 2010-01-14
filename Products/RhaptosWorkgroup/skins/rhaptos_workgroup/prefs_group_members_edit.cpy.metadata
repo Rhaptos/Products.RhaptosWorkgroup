@@ -1,0 +1,5 @@
+[default]
+title=Edit Group Members
+
+[actions]
+action.success = traverse_to:string:workgroup_members

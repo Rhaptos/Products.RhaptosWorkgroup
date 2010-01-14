@@ -1,0 +1,260 @@
+# --- PLEASE EDIT THE LINES BELOW CORRECTLY ---
+# SOME DESCRIPTIVE TITLE.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2004-07-09 14:54+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
+"Last-Translator: Per Thorsteinsson <s001552@student.dtu.dk>\n"
+"Language-Team: Danmark <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"Language-Code: da\n"
+"Language-Name: Danish\n"
+"Preferred-Encodings: utf-8 latin1\n"
+"Domain: plone\n"
+
+# æ Æ ø Ø å Å
+
+
+#: workgroup_delete_form.pt
+#. <span i18n:translate="">Delete Workgroup:</span>
+msgid "Delete Workgroup:"
+msgstr "Slet arbejdsgruppe:"
+
+
+#: workgroup_delete_form.pt
+#. <p i18n:translate="delete_form_a">
+#      You have requested that all members of this workgroup be
+#      removed.  This will <strong><em>delete</em></strong> the
+#      workgroup, and any changes that have been made to its
+#      contents will be lost. Are you sure you want to do this?
+#    </p>
+msgid "delete_form_a"
+msgstr "Du har bedt om at alle medlemmer af denne arbejdsgruppe bliver fjernet. Dette vil <strong><em>slette</em></strong> arbejdsgruppen og alle forandringer til dens indhold. Er du sikker på at du vil gøre dette?"
+
+# New potential translation for new text, above?
+# This will delete the workgroup, and any changes that have been made
+# to its contents will be lost.
+# Dette vil slette arbejdsgruppen og alle foraendringer til des inhold
+# Old text, which matches the translation above was:
+#   This will delete the workgroup and all of its contents.
+
+#: workgroup_delete_form.pt
+#. <input type="submit" class="destructive" name="workgroup_delete:action" value="Yes, Delete it" i18n:attributes="value"/>
+msgid "Yes, Delete it"
+msgstr "Ja, slet den"
+
+
+#: workgroup_delete_form.pt
+#. <input type="submit" class="standalone" name="workgroup_members:action" value="No, Cancel" i18n:attributes="value"/>
+#: exit_form.pt
+#. <input type="submit" class="standalone" name="workgroup_members:action" value="No, Cancel" i18n:attributes="value"/>
+msgid "No, Cancel"
+msgstr "Nej, aflys"
+
+
+#: exit_form.pt
+#. <span i18n:translate="">Leave Workgroup:</span>
+msgid "Leave Workgroup:"
+msgstr "Forlad arbejdsgruppe:"
+
+
+#: exit_form.pt
+#. <p i18n:translate="exit_form_a">
+#      You are about to leave this workgroup.  <strong><em>You will not be
+#      able to rejoin</em></strong> this group unless added by another group
+#      member. Are you sure you want to do this?
+#    </p>
+msgid "exit_form_a"
+msgstr "Du er ved at forlade denne arbejdsgruppe. <strong><em>Du vil ikke have mulighed for at gen-tilslutte dig</em></strong> denne gruppe med mindre du bliver tilføjet af et andet gruppemedlem. Er du sikker på at du vil gøre dette?"
+
+
+#: exit_form.pt
+#. <input type="submit" class="destructive" name="workgroup_exit:action" value="Yes, Leave" i18n:attributes="value"/>
+msgid "Yes, Leave"
+msgstr "Ja, forlad"
+
+
+#: members.pt
+#. <span i18n:translate="">Members of:</span>
+msgid "Members of:"
+msgstr "Medlemmer af:"
+
+
+#: members.pt
+#. <h2 i18n:translate="">Search for New Group Members</h2>
+msgid "Search for New Group Members"
+msgstr "Søg efter nye gruppemedlemmer"
+
+
+#: members.pt
+#. <input class="context searchButton"
+#	         tabindex=""
+#	         type="submit"
+#	         name="search"
+#	         value="Search"
+#		 i18n:attributes="value"
+#	         tal:attributes="tabindex tabindex/next;" />
+msgid "Search"
+msgstr "Søg"
+
+
+#: members.pt
+#. <h2 i18n:translate="">Results</h2>
+msgid "Results"
+msgstr "Resultater"
+
+
+#: members.pt
+#. <em tal:condition="not:results" i18n:translate="">None</em>
+msgid "None"
+msgstr "Ingen"
+
+
+#: members.pt
+#. <input class="noborder"
+#                           type="checkbox"
+#                           src="select_all_icon.gif"
+#                           name="selectButton"
+#                           title="Select all items"
+#                           alt="Select all items"
+#			   i18n:attributes="title alt"
+#			   onClick="toggleSelect(this); return false;"
+#                           tal:attributes="src string:$portal_url/select_all_icon.gif"
+#                           />
+msgid "Select all items"
+msgstr "Vælg alle objekter"
+
+
+#: members.pt
+#. <th i18n:translate="">Name</th>
+#: properties.pt
+#. <span i18n:translate="">Name</span>
+msgid "Name"
+msgstr "Navn"
+
+
+#: members.pt
+#. <input class="context"
+#	         tabindex=""
+#                 type="submit"
+#                 name="addingaction"
+#                 value="Add selected users"
+#		 i18n:attributes="value"
+#                 tal:attributes="tabindex tabindex/next;" />
+#	    </tal:block>
+msgid "Add selected users"
+msgstr "Tilføj valgte brugere"
+
+
+#: members.pt
+#. <span i18n:translate="">Current Group Members</span>
+msgid "Current Group Members"
+msgstr "Nuværende gruppemedlemmer"
+
+
+#: members.pt
+#. <a tal:define="emails python:','.join([m.getProperty('email') for m in group.getGroupMembers()]);" 
+#    tal:attributes="href string:mailto:${emails}" i18n:translate="">(email group)</a>
+msgid "(email group)"
+msgstr "(email gruppe)"
+
+
+#: members.pt
+#. <tr i18n:translate="members_a">
+#	    <th>Remove</th>
+#	<th>User</th>
+#	    <th>E-mail</th>
+#	  </tr>
+msgid "members_a"
+msgstr "<th>Fjern</th> <th>Bruger</th> <th>E-mail</th>"
+
+
+#: members.pt
+#. <input class="destructive"
+#               type="submit"
+#               name="prefs_group_members_edit"
+#               value="Remove selected users from group" 
+#	       i18n:attributes="value" />
+msgid "Remove selected users from group"
+msgstr "Fjern valgte brugere fra gruppe"
+
+
+#: properties.pt
+#. <span i18n:translate="">Properties of:</span>
+msgid "Properties of:"
+msgstr "Egenskaber for:"
+
+
+#: properties.pt
+#. <span class="legend" i18n:translate="">Workgroup Properties</span>
+msgid "Workgroup Properties"
+msgstr "Arbejdsgruppe-egenskaber"
+
+
+#: properties.pt
+#. <span i18n:translate="">Group ID</span>
+msgid "Group ID"
+msgstr "Gruppe-ID"
+
+
+#: properties.pt
+#. <div id="groupname_help" 
+#                     i18n:translate=""
+#                     class="help" 
+#                     style="visibility:hidden">Enter a unique ID for the group here</div>
+msgid "Enter a unique ID for the group here"
+msgstr "Indtast et unikt ID for gruppen her"
+
+
+#: properties.pt
+#. <div id="title_help" 
+#                 i18n:translate=""
+#                 class="help" 
+#                 style="visibility:hidden">Enter a name for the workgroup.</div>
+msgid "Enter a name for the workgroup."
+msgstr "Indtast et navn for arbejdsgruppen"
+
+
+#: properties.pt
+#. <span i18n:translate="">Email</span>
+msgid "Email"
+msgstr "Email"
+
+
+#: properties.pt
+#. <div id="email_help" i18n:translate="" class="help" 
+# style="visibility:hidden">If there is a common email address (like a mailing list) shared by all workgroup members, enter it here.</div>
+msgid "If there is a common email address (like a mailing list) shared by all workgroup members, enter it here."
+msgstr "Hvis der er en fælles emailaddresse (som en mailing liste), der deles af alle arbejdsgruppemedlemmer, så indtast den her."
+
+
+#: properties.pt
+#. <span i18n:translate="">Description</span>
+msgid "Description"
+msgstr "Beskrivelse"
+
+
+#: properties.pt
+#. <div id="description_help" 
+#                 i18n:translate=""
+#                 class="help" 
+#                 style="visibility:hidden">Enter a description of purpose for this workgroup.</div>
+msgid "Enter a description of purpose for this workgroup."
+msgstr "Indtast en formålsbeskrivelse for denne arbejdsgruppe. "
+
+
+#: properties.pt
+#. <input class="context add"
+#              tabindex=""
+#              type="submit"
+#              value="Update"
+#	      i18n:attributes="value"
+#              tal:attributes="tabindex tabindex/next;"
+#              />
+msgid "Update"
+msgstr "Opdater"

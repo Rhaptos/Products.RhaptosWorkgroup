@@ -1,0 +1,7 @@
+[default]
+title=Workgroup Members Delete Confirm
+
+[actions]
+action.success=redirect_to_action:string:members
+action.success..delete=traverse_to:string:workgroup_members_remove
+action.success..cancel=redirect_to_action:string:members

@@ -1,0 +1,107 @@
+<?xml version="1.0"?>
+<cmfformcontroller>
+  <!-- folder_cut... -->
+  <!-- action.success.Workgroup=redirect_to:string:workspace_contents -->
+  <action
+    object_id="folder_cut"
+    status="success"
+    context_type="Workgroup"
+    button=""
+    action_type="redirect_to"
+    action_arg="string:workspace_contents"
+    />
+  
+  <!-- action.failure.Workgroup=redirect_to:string:workspace_contents -->
+  <action
+    object_id="folder_cut"
+    status="failure"
+    context_type="Workgroup"
+    button=""
+    action_type="redirect_to"
+    action_arg="string:workspace_contents"
+    />
+  
+  <!-- action.success_no_edit.Workgroup=redirect_to:string:workspace_contents -->
+  <action
+    object_id="folder_cut"
+    status="success_no_edit"
+    context_type="Workgroup"
+    button=""
+    action_type="redirect_to"
+    action_arg="string:workspace_contents"
+    />
+  
+  <!-- folder_delete... -->
+  <!-- action.success.Workgroup=redirect_to:string:workspace_contents -->
+  <action
+    object_id="folder_delete"
+    status="success"
+    context_type="Workgroup"
+    button=""
+    action_type="redirect_to"
+    action_arg="string:workspace_contents"
+    />
+
+  <!-- action.failure.Workgroup=redirect_to:string:workspace_contents -->
+  <action
+    object_id="folder_delete"
+    status="failure"
+    context_type="Workgroup"
+    button=""
+    action_type="redirect_to"
+    action_arg="string:workspace_contents"
+    />
+
+  <!-- action.success_no_edit.Workgroup=redirect_to:string:workspace_contents -->
+  <action
+    object_id="folder_delete"
+    status="success_no_edit"
+    context_type="Workgroup"
+    button=""
+    action_type="redirect_to"
+    action_arg="string:workspace_contents"
+    />
+  
+  <!-- folder_paste... -->
+  <!-- action.success.Workgroup=redirect_to:string:workspace_contents -->
+  <action
+    object_id="folder_paste"
+    status="success"
+    context_type="Workgroup"
+    button=""
+    action_type="redirect_to"
+    action_arg="string:workspace_contents"
+    />
+
+  <!-- action.failure.Workgroup=redirect_to:string:workspace_contents -->
+  <action
+    object_id="folder_paste"
+    status="failure"
+    context_type="Workgroup"
+    button=""
+    action_type="redirect_to"
+    action_arg="string:workspace_contents"
+    />
+
+  <!-- action.success_no_edit.Workgroup=redirect_to:string:workspace_contents -->
+  <action
+    object_id="folder_paste"
+    status="success_no_edit"
+    context_type="Workgroup"
+    button=""
+    action_type="redirect_to"
+    action_arg="string:workspace_contents"
+    />
+  
+  <!-- folder_rename... -->
+  <!-- action.success.Workgroup=redirect_to:string:workspace_contents -->
+  <action
+    object_id="folder_rename"
+    status="success"
+    context_type="Workgroup"
+    button=""
+    action_type="redirect_to"
+    action_arg="string:workspace_contents"
+    />
+
+</cmfformcontroller>

@@ -1,0 +1,57 @@
+<!DOCTYPE html PUBLIC  "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<tal:wrap
+      xmlns:metal="http://xml.zope.org/namespaces/metal" 
+      xmlns:tal="http://xml.zope.org/namespaces/tal" 
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      tal:define="default_tab string:members"
+      i18n:domain="rhaptos">
+<html xml:lang="en-US" lang="en-US"
+      xmlns="http://www.w3.org/1999/xhtml"
+      metal:use-macro="context/main_template/macros/master">
+
+<tal:comment tal:replace="nothing">
+CNX note: 
+  no change.
+</tal:comment>
+
+  <div metal:fill-slot="content_title_header">
+      <metal:title metal:use-macro="context/workspace_contents/macros/workspacetitle">Workyspacement</metal:title>
+  </div>
+
+  <div metal:fill-slot="main">
+
+    <div class="return-link">
+      <a href="workgroup_members" i18n:translate="link_wg_return_to_members">
+        &#171; Return to membership page for
+        <span i18n:name="name" tal:content="context/Title">Music Theory</span>
+      </a>
+    </div>
+
+    <h2 i18n:translate="heading_delete_workgroup_form">Delete Workgroup</h2>
+
+    <p i18n:translate="text_delete_workgroup">
+      You have requested that all members of this workgroup be
+      removed.  This will 
+      <span i18n:name="delete_text">
+	<strong>
+	  <em i18n:translate="text_delete_workgroup">delete</em>
+	</strong> 
+      </span> the workgroup, and any changes that have been made to
+      its contents will be lost. Are you sure you want to do this?
+    </p>
+    <form action="." method="post" width="100%" name="delete"
+          tal:attributes="action template/getId">
+      <input type="submit" class="destructive"
+        name="form.button.delete"
+	value="Yes, Delete it"
+	i18n:attributes="value value_workgroup_yes_delete"/>
+      <input type="submit" class="standalone" 
+        name="form.button.cancel"
+	value="No, Cancel" 
+	i18n:attributes="value value_workgroup_no_cancel"/>
+      <input type="hidden" name="form.submitted" value="1" />
+    </form>
+  </div>
+
+</html>
+</tal:wrap>

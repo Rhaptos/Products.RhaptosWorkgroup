@@ -1,0 +1,109 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      metal:use-macro="here/main_template/macros/master"
+      i18n:domain="rhaptos"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n">
+
+  <metal:block fill-slot="top_slot" tal:define="dummy python:request.set('disable_border', 1)" />
+
+  <style type="text/css" metal:fill-slot="css_slot">
+  </style>
+
+  <body>
+    <div metal:fill-slot="main"
+         tal:define="home context/portal_membership/getHomeFolder;
+                     homeurl home/absolute_url;">
+      <h1 i18n:translate="header_manage_wgs">Manage Workgroups</h1>
+
+      <div style="margin: 1.5em 0pt;" metal:define-macro="create">
+        <span style="float: right" tal:define="help nocall:portal/help/authoring/authorguide | nothing" tal:condition="nocall:help">(<a i18n:translate="label_createworkgroup_More" href="/help/authoring/authorguide#workgroups" tal:attributes="href string:${help/absolute_url}#workgroups">More about 
+Workgroups</a>)</span>
+        <a href="create_workgroup"
+           i18n:translate="link_create_new_wg"
+           tal:attributes="href string:$homeurl/create_workgroup">Create a new Workgroup</a>
+        <a href="create_workgroup"
+           tal:attributes="href string:$homeurl/create_workgroup">
+          <img src="group.gif" tal:attributes="src string:$portal_url/group.gif">
+        </a>
+      </div>
+
+      <ul class="workgroups list_listing">
+        <li class="workgroup"
+            tal:repeat="wg context/getWorkspaces">
+          <h2>
+            <a href="workgroup_home"
+               tal:content="wg/title"
+               tal:attributes="href wg/link">
+              Anthony Brandt's Music
+            </a>
+          </h2>
+          <div class="edit_links"
+               tal:define="link wg/link;
+                           members wg/members;
+                           mcount python:len(members)">
+            <a href="workgroup_properties"
+               tal:attributes="href string:$link/workgroup_properties"
+               i18n:translate="link_edit_properties">
+              Edit properties</a> |
+            <a href="workgroup_members"
+               tal:attributes="href string:$link/workgroup_members"
+               i18n:translate="link_edit_members">
+              Edit members</a> |
+            <a href="workgroup_leave"
+               tal:condition="python:mcount > 1"
+               tal:attributes="href string:$link/workgroup_exit_form"
+               i18n:translate="link_leave_wg">
+              Leave Workgroup</a>
+            <a href="workgroup_del"
+               tal:condition="python:mcount == 1"
+               tal:attributes="href string:$link/workgroup_delete_form"
+               i18n:translate="link_delete_wg">
+              Delete Workgroup</a>
+          </div>
+          <table>
+            <tbody>
+              <tr>
+                <th i18n:translate="text_wgtable_contents">Contents:</th>
+                <td i18n:translate="text_wgtable_contents_count">
+                  <span i18n:name="number" tal:content="wg/contents">36</span> modules, collections, and files
+                </td>
+              </tr>
+              <tr>
+                <th i18n:translate="text_wgtable_email">E-mail:</th>
+                <td>
+                  <span tal:condition="not:wg/email" i18n:translate="text_none_set" class="none_set">None set</span>
+                  <a tal:condition="wg/email" tal:content="wg/email"
+                     tal:attributes="href string:mailto:${wg/email}">bob@example.com</a>
+                </td>
+              </tr>
+              <tr>
+                <th i18n:translate="text_wgtable_desc">Description:</th>
+                <td>
+                  <i tal:condition="not:wg/description" i18n:translate="text_none_set">None set</i>
+                  <span tal:condition="wg/description" tal:replace="wg/description">Lorem ipsum dolor sit.</span>
+                </td>
+              </tr>
+              <tr>
+                <th i18n:translate="text_wgtable_members">Members:</th>
+                <td>
+                  <tal:loop repeat="member wg/members">
+                    <a href="http://cnx.org/member_profile/abrandt"
+                       tal:content="member/fullname"
+                       tal:attributes="href string:$portal_url/member_profile/${member/id}">Anthony Brandt
+                    </a><tal:comma condition="not:repeat/member/end">,</tal:comma>
+                  </tal:loop>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </li>
+      </ul>
+      
+      <div metal:use-macro="template/macros/create" />
+
+    </div>
+  </body>
+
+</html>

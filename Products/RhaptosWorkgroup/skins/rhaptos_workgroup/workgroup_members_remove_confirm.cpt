@@ -1,0 +1,85 @@
+<span xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      i18n:domain="plone"
+      tal:define="default_tab string:members">
+<html xml:lang="en" lang="en"
+      metal:use-macro="here/main_template/macros/master">
+  
+  <tal:comment tal:replace="nothing">
+    new to Rhaptos. see also RhaptosSite/skins/rhaptos_site/folder_delete_confirm
+  </tal:comment>
+
+  <body>
+    <div metal:fill-slot="content_title_header">
+      <metal:title use-macro="context/workspace_contents/macros/workspacetitle">Workyspacement</metal:title>
+    </div>
+
+    <div metal:fill-slot="main">
+      <div class="return-link">
+        <a href="workgroup_members" i18n:translate="text_return_wg_members">
+          &#171; Return to Workgroup membership page
+        </a>
+      </div>
+
+      <h2 i18n:translate="header_remove_members_confirm">
+        Remove member(s) from Workgroup
+      </h2>
+      
+      <form action="." method="post" name="confirm"
+            tal:attributes="action template/getId">
+        <ul class="removal list_listing"
+            tal:define="memberids request/delete;">
+          <tal:loop tal:repeat="mid memberids">
+            <li class="user"
+                tal:define="item                 python:context.desecured.getMemberById(mid);
+                            item_title_or_id     python:item.getProperty('fullname');
+                            item_url             string:$portal_url/member_profile/$mid;">
+              <strong>
+                <a href="" tal:content="item_title_or_id" tal:attributes="href item_url">User fullname</a>
+              </strong>
+              <em tal:condition="python:member.getId()==mid">(<strong>This is you.</strong>  By removing yourself,
+                you will not be able to rejoin this group unless added by another group member.)</em>
+
+              <input type="hidden" name="delete:list" value=""
+                     tal:attributes="value mid" />
+            </li>
+          </tal:loop>
+        </ul>
+        
+        <p i18n:translate="text_wg_members_rm_desc">
+          You are about to remove these members from
+          <span i18n:name="wgtitle" tal:content="context/Title">Music Theory</span>.
+          Once they are removed, they can not join the Workgroup again,
+          except by invitation of the remaining Workgroup members.
+        </p>
+        <p i18n:translate="text_del_confirm_continue">
+          Are you sure you want to continue?
+        </p>
+
+        <input type="hidden" name="groupname"
+               tal:attributes="value request/groupname"/>
+
+        <input class="destructive"
+               name="form.button.delete"
+               value="Yes, Remove members"
+               type="submit"
+               tabindex=""
+               i18n:attributes="value"
+               tal:attributes="tabindex tabindex/next;" />
+        <input class="standalone"
+               name="form.button.cancel"
+               value="No, Cancel"
+               type="submit"
+               tabindex=""
+               i18n:attributes="value"
+               tal:attributes="tabindex tabindex/next;" />
+        
+        <input type="hidden" name="form.submitted" value="1" />
+      </form>
+
+    </div>
+  </body>
+</html>
+</span>

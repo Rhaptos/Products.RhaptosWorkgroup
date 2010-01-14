@@ -1,0 +1,13 @@
+[default]
+title=Workgroup Membership
+
+[validators]
+validators = validate_workgroup_members
+
+[actions]
+action.success=traverse_to:string:workgroup_members
+action.success..leave=traverse_to:string:workgroup_members_remove_dispatch
+action.success..search=traverse_to:string:workgroup_members
+action.success..add=traverse_to:string:prefs_group_members_edit
+action.success..remove=traverse_to:string:workgroup_members_remove_dispatch
+action.failure=traverse_to:string:workgroup_members

@@ -1,0 +1,33 @@
+Static Implementation Tests
+===========================
+ 	
+Let's just make sure that our static views are working as expected.
+	
+The first thing we need to do is to make sure the interfaces are
+being correctly implemented::
+ 	
+    >>> from Products.RhaptosWorkgroup.ATWorkgroup import ATWorkgroup
+    >>> ATWorkgroup.meta_type == 'WorkgroupAT'
+    True
+    >>> ATWorkgroup.portal_type == 'Workgroup'
+    True
+    >>> ATWorkgroup.archetype_name == 'Workgroup'
+    True
+    >>> ATWorkgroup.immediate_view == 'workspace_contents'
+    True
+    >>> ATWorkgroup.default_view == 'workspace_contents'
+    True
+    >>> type(ATWorkgroup.schema)
+    <class 'Products.Archetypes.Schema.Schema'>
+    >>> from Products.RhaptosWorkgroup.Workgroup import Workgroup
+    >>> type(Workgroup.title)
+    <type 'ComputedAttribute'>
+    >>> type(Workgroup.email)
+    <type 'ComputedAttribute'>
+    >>> type(Workgroup.description)
+    <type 'ComputedAttribute'>
+    >>> Workgroup.meta_type == 'Workgroup'
+    True
+    >>> type(Workgroup.__implements__)
+    <type 'tuple'>
+
