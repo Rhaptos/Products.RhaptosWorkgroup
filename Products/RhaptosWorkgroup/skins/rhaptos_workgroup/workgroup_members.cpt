@@ -223,21 +223,20 @@ CNX note:
 		      tal:attributes="href string:/member_profile/${username}"
 		      tal:content="string:${username}">[userid]</a>
                 </td>
-
                 </tal:badauthor>
+
                 <td tal:define="email python:u.getProperty('email')">
 		    <a href="#" tal:attributes="href string:mailto:${email}">
-
+<!--
                 <img src=""
                      tal:replace="structure portal/mail_icon.gif" />
+-->
 		      <span tal:replace="email" />
-                </a>
-
-
-            </td>
-		</tal:block>
+                    </a>
+                </td>
+              </tal:block>
             </tr>
-	    </tal:block>
+	  </tal:block>
         </table>
 
         <input class="destructive"
