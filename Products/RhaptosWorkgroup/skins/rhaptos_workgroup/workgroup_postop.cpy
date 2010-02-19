@@ -19,6 +19,6 @@ if len(wgs) > 1:
 else:
     u_tool = getToolByName(context, 'portal_url')
     portal = u_tool.getPortalObject()
-    state.set(status='home', context=portal)     # otherwise, go to "MyCNX Home"
+    state.set(status='home', context=portal)     # otherwise, go to "mydashboard Home"
 
 return state
