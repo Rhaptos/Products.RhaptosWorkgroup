@@ -163,9 +163,6 @@ CNX note:
                
                 <td tal:define="email user/email">
 		    <a href="#" tal:attributes="href string:mailto:${email}">
-
-                <img src=""
-                     tal:replace="structure portal/mail_icon.gif" />
 		      <span tal:replace="email" />
                     </a>
                 </td>
@@ -227,10 +224,6 @@ CNX note:
 
                 <td tal:define="email python:u.getProperty('email')">
 		    <a href="#" tal:attributes="href string:mailto:${email}">
-<!--
-                <img src=""
-                     tal:replace="structure portal/mail_icon.gif" />
--->
 		      <span tal:replace="email" />
                     </a>
                 </td>
