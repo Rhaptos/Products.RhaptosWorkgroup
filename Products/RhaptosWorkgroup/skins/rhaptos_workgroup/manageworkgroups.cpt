@@ -14,7 +14,8 @@
   <body>
     <div metal:fill-slot="main"
          tal:define="home context/portal_membership/getHomeFolder;
-                     homeurl home/absolute_url;">
+                     homeurl home/absolute_url;
+                     workgroup_list context/getWorkspaces">
       <h1 i18n:translate="header_manage_wgs">Manage Workgroups</h1>
 
       <div style="margin: 1.5em 0pt;" metal:define-macro="create">
@@ -31,7 +32,7 @@ Workgroups</a>)</span>
 
       <ul class="workgroups list_listing">
         <li class="workgroup"
-            tal:repeat="wg context/getWorkspaces">
+            tal:repeat="wg workgroup_list">
           <h2>
             <a href="workgroup_home"
                tal:content="wg/title"
@@ -101,7 +102,9 @@ Workgroups</a>)</span>
         </li>
       </ul>
       
+      <tal:div tal:condition="python:len(workgroup_list) > 2">
       <div metal:use-macro="template/macros/create" />
+      </tal:div>
 
     </div>
   </body>
