@@ -72,8 +72,6 @@ class Workgroup(PloneFolder, DefaultDublinCoreImpl):
 
         This defines a workspace for collaborative content authoring"""
 
-    __implements__ = PloneFolder.__implements__
-
     title = ComputedAttribute(lambda self: self._getWorkgroupProperty('title'), 1)
     email = ComputedAttribute(lambda self: self._getWorkgroupProperty('email'), 1)
     description = ComputedAttribute(lambda self: self._getWorkgroupProperty('description'), 1)
