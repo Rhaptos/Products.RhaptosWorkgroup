@@ -20,8 +20,7 @@ from Products.CMFPlone.PloneFolder import PloneFolder
 from Products.CMFDefault.SkinnedFolder import SkinnedFolder
 
 # Import permission names
-from Products.CMFCore import CMFCorePermissions
-from Products.CMFCore.CMFCorePermissions import View, ManageProperties, ListFolderContents
+from Products.CMFCore import permissions
 from Products.CMFCore.utils import getToolByName
 
 try:
@@ -55,15 +54,15 @@ factory_type_information = (
      'actions': ({'id': 'view',
                   'name': 'Contents',
                   'action': 'workspace_contents',
-                  'permissions': (CMFCorePermissions.View,)},
+                  'permissions': (permissions.View,)},
                  {'id': 'properties',
                   'name': 'Properties',
                   'action': 'workgroup_properties',
-                  'permissions': (CMFCorePermissions.View,)},
+                  'permissions': (permissions.View,)},
                  {'id': 'members',
                   'name': 'Members',
                   'action': 'workgroup_members',
-                  'permissions': (CMFCorePermissions.View,)},
+                  'permissions': (permissions.View,)},
                  ),
      },
     )
