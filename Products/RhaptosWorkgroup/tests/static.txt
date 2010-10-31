@@ -28,6 +28,7 @@ being correctly implemented::
     <type 'ComputedAttribute'>
     >>> Workgroup.meta_type == 'Workgroup'
     True
-    >>> type(Workgroup.__implements__)
-    <type 'tuple'>
+    >>> from zope.interface import implementedBy
+    >>> list(implementedBy(Workgroup))
+    [<type 'tuple'>]
 
