@@ -1,7 +1,13 @@
 from setuptools import setup, find_packages
 import os
 
-version = '0.23'
+from setuptools import setup, find_packages
+import os
+
+def read(*rnames):
+    return open(os.path.join(os.path.dirname(__file__), *rnames)).read()
+
+version = read("Products", "RhaptosWorkgroup", "version.txt").strip()
 
 setup(name='Products.RhaptosWorkgroup',
       version=version,
