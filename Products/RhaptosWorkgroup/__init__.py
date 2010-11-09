@@ -32,15 +32,12 @@ contentClasses = (Workgroup.Workgroup,)
 
 product_globals = globals()
 
-z_bases = utils.initializeBasesPhase1(contentClasses, this_module)
-
 # Make the skins available as DirectoryViews
 registerDirectory('skins', globals())
 
 def initialize(context):
     """Register"""
 
-    utils.initializeBasesPhase2( z_bases, context )
     utils.ContentInit(Workgroup.Workgroup.meta_type,
                       content_types = contentClasses,
                       permission = permissions.AddPortalContent,
