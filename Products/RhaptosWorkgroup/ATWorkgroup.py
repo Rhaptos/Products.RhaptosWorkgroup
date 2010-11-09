@@ -15,6 +15,7 @@ from AccessControl import ClassSecurityInfo
 
 from Products.RhaptosWorkgroup.config import PROJECTNAME
 
+from Products.CMFCore.utils import getToolByName
 from Products.CMFCore.permissions import View
 
 from Products.Archetypes.public import ComputedField, StringWidget
@@ -24,7 +25,6 @@ from Products.ATContentTypes.content.base import registerATCT
 from Products.ATContentTypes.content.schemata import finalizeATCTSchema
 from Products.ATContentTypes.content.base import ATCTOrderedFolder
 from Products.ATContentTypes.content.folder import ATFolderSchema
-from Products.ATContentTypes.lib.autosort import AutoOrderSupport
 from Products.ATContentTypes.interfaces import IATFolder
 
 try:
@@ -64,7 +64,7 @@ ATWGSchema = ATFolderSchema.copy() + Schema((
     ))
 finalizeATCTSchema(ATWGSchema)
 
-class ATWorkgroup(AutoOrderSupport, ATCTOrderedFolder):
+class ATWorkgroup(ATCTOrderedFolder):
     """A folder which can contain other items."""
 
     schema         =  ATWGSchema
@@ -81,9 +81,6 @@ class ATWorkgroup(AutoOrderSupport, ATCTOrderedFolder):
     typeDescription= 'A folder which can contain other items, with some group management features.'
     typeDescMsgId  = 'description_edit_workgroup'
     
-    __implements__ = (ATCTOrderedFolder.__implements__, IATFolder,
-                     AutoOrderSupport.__implements__)
-
     include_default_actions = False
     actions = (
                {'id': 'view',
@@ -118,7 +115,6 @@ class ATWorkgroup(AutoOrderSupport, ATCTOrderedFolder):
 
     def manage_afterAdd(self, item, container):
         ATCTOrderedFolder.manage_afterAdd(self, item, container)
-        AutoOrderSupport.manage_afterAdd(self, item, container)
         
         #forum installation
         if forumname and not hasattr(item, forumname):
@@ -139,63 +135,3 @@ class ATWorkgroup(AutoOrderSupport, ATCTOrderedFolder):
 
 registerATCT(ATWorkgroup, PROJECTNAME)
 
-
-# migration....
-
-import logging
-from cStringIO import StringIO
-
-from Products.CMFCore.utils import getToolByName
-
-from Products.ATContentTypes.migration.common import registerATCTMigrator
-from Products.ATContentTypes.migration.common import migratePortalType
-from Products.ATContentTypes.migration.migrator import CMFFolderMigrator
-from Products.ATContentTypes.migration.walker import CatalogWalkerWithLevel
-
-LOG = logging.getLogger('Workgroup.migration')
-
-class WorkgroupMigrator(CMFFolderMigrator):
-    walkerClass = CatalogWalkerWithLevel
-    map = {}
-
-registerATCTMigrator(WorkgroupMigrator, ATWorkgroup)
-
-def migrateWGs(portal):
-    """Migrate Workgroup to ATWorkgroup; largely stolen from ATCT.migration.atctmigrator"""
-    LOG.debug('Starting ATWorkspace type migration')
-    kwargs = {}
-
-    atct = getToolByName(portal, 'portal_atct')
-    kwargs['use_catalog_patch'] = bool(atct.migration_catalog_patch)
-    kwargs['transaction_size'] = int(atct.migration_transaction_size)
-    transaction = atct.migration_transaction_style
-    if transaction == "full transaction":
-        kwargs['full_transaction'] = True
-        kwargs['use_savepoint'] = False
-    elif transaction == "savepoint":
-        kwargs['full_transaction'] = False
-        kwargs['use_savepoint'] = True
-    else:
-        kwargs['full_transaction'] = False
-        kwargs['use_savepoint'] = False
-
-    out = StringIO()
-    migrator = WorkgroupMigrator
-    ## a loop in original...
-    src_portal_type = migrator.src_portal_type
-    dst_portal_type = migrator.dst_portal_type
-    ttool = getToolByName(portal, 'portal_types')
-    if (ttool.getTypeInfo(src_portal_type) is None or
-        ttool.getTypeInfo(dst_portal_type) is None):
-
-        LOG.debug('Missing FTI for %s or %s'%(src_portal_type, dst_portal_type))
-        print >>out, ("Couldn't migrate src_portal_type due to missing FTI")
-        #continue
-    else:
-        migratePortalType(portal, src_portal_type, dst_portal_type, out=out,
-                          migrator=migrator, **kwargs)
-    ##
-    
-    LOG.debug('Finished ATWorkgroup type migration')
-    
-    return out.getvalue()
