@@ -10,4 +10,5 @@ def setupWorkgroups(context):
         return
 
     portal = context.getSite()
-    portal.invokeFactory(type_name='Folder', id='groups', title='Workgroups')
+    portal.invokeFactory(type_name='Folder', id='workgroups', 
+        title='Workgroups')
