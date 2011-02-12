@@ -81,20 +81,16 @@ CNX note:
 	<input type="hidden" name="groupname" value="groupname" tal:attributes="value groupname" />
 
 	<p>
-	  <input tabindex=""
-	         type="text"
+	  <input type="text"
 	         name="searchstring"
 	         value=""
-	         tal:attributes="tabindex tabindex/next;
-                                 value request/searchstring | default" />
+	         tal:attributes="value request/searchstring | default" />
 
 	  <input class="context searchButton"
-	         tabindex=""
 	         type="submit"
                  name="form.button.search"
 	         value="Search"
-		 i18n:attributes="value value_serch"
-	         tal:attributes="tabindex tabindex/next;" />
+		 i18n:attributes="value value_serch"/>
 	</p>
       </form>
 
@@ -173,12 +169,10 @@ CNX note:
 	    <metal:block metal:use-macro="context/batch_macros/macros/navigation" />
 	  
 	  <input class="context"
-	         tabindex=""
                  type="submit"
                  name="form.button.add"
                  value="Add selected users"
-		 i18n:attributes="value value_add_selected_users"
-                 tal:attributes="tabindex tabindex/next;" />
+		 i18n:attributes="value value_add_selected_users"/>
 	    </tal:block>
 
 	  </tal:block>

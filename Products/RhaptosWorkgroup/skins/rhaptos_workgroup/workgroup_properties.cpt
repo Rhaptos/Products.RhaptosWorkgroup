@@ -62,11 +62,9 @@ CNX note:
                        name="groupname" 
                        size="30"
                        value="groupname"
-                       tabindex=""
                        onfocus="formtooltip('groupname_help',1)" 
                        onblur="formtooltip('groupname_help',0)" 
-                       tal:attributes="value groupname;
-                                       tabindex tabindex/next;"
+                       tal:attributes="value groupname"
                        />
 	      <span tal:condition="groupname | nothing" tal:replace="groupname" />
 
@@ -96,10 +94,8 @@ CNX note:
                        id="title"
                        name="title"
                        size="30"
-                       tabindex=""
                        value="member.title html_quote"
-                       tal:attributes="value title;
-                                       tabindex tabindex/next;"
+                       tal:attributes="value title"
                        />
     
             </div>
@@ -124,10 +120,8 @@ CNX note:
                        id="email"
                        name="email"
                        size="30"
-                       tabindex=""
                        value="member.email html_quote"
-                       tal:attributes="value email;
-                                       tabindex tabindex/next;"
+                       tal:attributes="value email"
                        />
     
             </div>
@@ -145,11 +139,9 @@ CNX note:
 
             <textarea cols="40"
                       rows="5"
-                      tabindex=""
                       id="description"
                       name="description"
                       tal:content="description"
-                      tal:attributes="tabindex tabindex/next;"
                       >
               Description
             </textarea>
@@ -157,21 +149,17 @@ CNX note:
 
             <div class="formControls">
                 <input class="context"
-                       tabindex=""
                        type="submit"
                        value="Update"
                        name="form.button.Save"
                        i18n:attributes="value value_save"
-                       tal:attributes="tabindex tabindex/next;"
                        />
 <!--
                 <input class="standalone"
-                       tabindex=""
                        type="submit"
                        value="Cancel"
                        name="form.button.Cancel"
                        i18n:attributes="value value_cancel"
-                       tal:attributes="tabindex tabindex/next;"
                        />
 -->
             </div>

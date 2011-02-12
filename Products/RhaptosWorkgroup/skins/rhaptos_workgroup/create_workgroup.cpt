@@ -67,11 +67,9 @@ workgroups</a></span>)
                        name="groupname" 
                        size="30"
                        value="groupname"
-                       tabindex=""
                        onfocus="formtooltip('groupname_help',1)" 
                        onblur="formtooltip('groupname_help',0)" 
-                       tal:attributes="value groupname;
-                                       tabindex tabindex/next;"
+                       tal:attributes="value groupname"
                        />
 	      <span tal:condition="groupname | nothing" tal:replace="groupname" />
 
@@ -99,9 +97,7 @@ workgroups</a></span>)
                   <input type="text"
                          name="title"
                          size="30"
-                         tabindex=""
-                         tal:attributes="value title;
-                                         tabindex tabindex/next;"
+                         tal:attributes="value title"
                          />
           </div>
      
@@ -125,9 +121,7 @@ workgroups</a></span>)
                    size="30"
                    value="email"
                    i18n:attributes="email value_email"
-                   tabindex=""
-                   tal:attributes="value email;
-                                   tabindex tabindex/next;"
+                   tal:attributes="value email"
                    />
           </div>
 
@@ -148,9 +142,7 @@ workgroups</a></span>)
             <textarea name="description"
                    cols="40" rows="5"
                    value="description"
-                   tabindex=""
-                   tal:content="description"
-                   tal:attributes="tabindex tabindex/next;">
+                   tal:content="description">
             </textarea>
           </div>
 
@@ -158,11 +150,9 @@ workgroups</a></span>)
           <div class="formControls">
             <input class="context"
                    type="submit"
-                   tabindex=""
                    name="form.button.Register"
                    value="Create"
-                   i18n:attributes="value value_create"
-                   tal:attributes="tabindex tabindex/next;" />
+                   i18n:attributes="value value_create"/>
           </div>
 
         <input type="hidden" name="form.submitted" value="1" />
