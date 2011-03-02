@@ -16,6 +16,7 @@
 
 g_tool = context.portal_groups
 m_tool = context.portal_membership
+portal = context.portal_url.getPortalObject()
 
 member = m_tool.getAuthenticatedMember()
 glist = g_tool.getGroupsForPrincipal(member);
@@ -28,7 +29,9 @@ returnonly['title'] = None  # title is required for sorting
 
 workspaces = []
 for g in groups:
-    gfolder = g_tool.getGroupareaFolder(g.getGroupName())
+    gfolder = portal.workgroups.get(g.getGroupName())
+    if gfolder is None:
+        continue
     groupname = g.getGroupName()
     gdict = {}
     if returnonly.has_key('id'):          gdict['id'] = groupname
