@@ -29,7 +29,7 @@
             enctype="multipart/form-data"
             class="enableUnloadProtection"
             action="."
-            tal:attributes="action string:${here_url}/${template/getId}" >
+            tal:attributes="action string:${context/@@plone_context_state/object_url}/${template/getId}" >
 
           <input type="hidden"
                  name="id"

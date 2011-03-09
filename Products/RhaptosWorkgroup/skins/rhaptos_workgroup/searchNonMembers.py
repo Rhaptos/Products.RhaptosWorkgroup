@@ -11,5 +11,7 @@
 # attribute not a method
 exclude_names = [u.getId() for u in exclude]
 members = context.portal_membership.searchForMembers(name=search)
-return [m for m in members if m.status != "Pending" and m.getId not in exclude_names]
+# Need a status property for members!
+# return [m for m in members if m.status != "Pending" and m.getId not in exclude_names]
+return [m for m in members if m.getId not in exclude_names]
 

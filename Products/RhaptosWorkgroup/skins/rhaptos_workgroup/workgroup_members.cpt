@@ -23,6 +23,7 @@ CNX note:
   <div metal:fill-slot="main"
        tal:define="errors python:request.get('errors', {});
                 mtool nocall:context/portal_membership;
+                portal context/@@plone_portal_state/portal;
                 Batch python:modules['Products.CMFPlone'].Batch;
                 gtool context/portal_groups;
                 groupname context/id;
@@ -60,7 +61,7 @@ CNX note:
       <tal:block tal:condition="not:request/searchstring | nothing">
       <p id="desc" i18n:translate="description_search_group_members">
 	Enter names or e-mail addresses of people with <span i18n:name="portal_title"
-	tal:replace="portal/Title">[Portal]</span> accounts you want
+	tal:replace="portal/title">[Portal]</span> accounts you want
 	to add to this group.  For example, to locate George
 	Washington you could enter:
       </p>
