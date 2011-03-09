@@ -11,15 +11,17 @@
 
 REQUEST=context.REQUEST
 groupstool = context.portal_groups
+portal = context.portal_url
 
 id = REQUEST.get('groupname', None)
 newGroup = ''
 
 # If there wasn't a group specified, we must be creating one
 if id is None:
-    f = groupstool.getGroupWorkspacesFolder()
+    f = portal.workgroups
     id = newGroup = 'wg' + str(f.nextID)
     f.manage_changeProperties(nextID = f.nextID + 1)
+    f.invokeFactory(type_name='Workgroup',id=id)
     groupstool.addGroup(newGroup, "", (), ())
 
 group = groupstool.getGroupById(id)
@@ -32,7 +34,7 @@ if newGroup:
     group.addMember(member.getId())
     msg = context.translate("message_workgroup_created", domain="rhaptos", default="Workgroup created.")
     
-new_context = groupstool.getGroupareaFolder(id)
+new_context = portal.workgroups.get(id)
 
 return state.set(status='success', portal_status_message=msg, context=new_context)
 

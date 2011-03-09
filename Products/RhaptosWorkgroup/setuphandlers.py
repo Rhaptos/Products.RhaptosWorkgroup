@@ -12,3 +12,4 @@ def setupWorkgroups(context):
     portal = context.getSite()
     portal.invokeFactory(type_name='Folder', id='workgroups', 
         title='Workgroups')
+    portal.workgroups.nextID = 0 # emulate old GroupFolder behavior

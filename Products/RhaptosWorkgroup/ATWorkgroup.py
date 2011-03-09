@@ -24,15 +24,15 @@ from Products.Archetypes.public import Schema
 from Products.ATContentTypes.content.base import registerATCT
 from Products.ATContentTypes.content.schemata import finalizeATCTSchema
 from Products.ATContentTypes.content.base import ATCTOrderedFolder
-from Products.ATContentTypes.content.folder import ATFolderSchema
-from Products.ATContentTypes.interfaces import IATFolder
+from Products.ATContentTypes.content.folder import ATBTreeFolderSchema
+from Products.ATContentTypes.interfaces import IATBTreeFolder
 
 try:
     from Products.CMFBoardTab.config import forumname
 except ImportError:
     forumname = None
 
-ATWGSchema = ATFolderSchema.copy() + Schema((
+ATWGSchema = ATBTreeFolderSchema.copy() + Schema((
     ComputedField('title',
               expression="context._getWorkgroupProperty('title')",
               searchable=True,
