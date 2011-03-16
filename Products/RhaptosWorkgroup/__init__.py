@@ -21,6 +21,11 @@ from config import PROJECTNAME, ADD_CONTENT_PERMISSION
 
 import Workgroup
 import ATWorkgroup
+import WorkgroupTool
+
+tools = (
+    WorkgroupTool.WorkgroupTool,
+)
 
 import monkeypatch
 
@@ -56,4 +61,7 @@ def initialize(context):
         extra_constructors = constructors,
         fti                = ftis,
         ).initialize(context)
+
+    utils.ToolInit('RhaptosWorkgroup Tool',
+        tools=tools, icon='tool.gif').initialize(context)
 
