@@ -13,6 +13,7 @@ REQUEST=context.REQUEST
 groupstool = context.portal_groups
 portal = context.portal_url
 wtool = context.portal_workgroups
+workgroups = wtool.getWorkgroupsFolder()
 
 id = REQUEST.get('groupname', None)
 newGroup = ''
