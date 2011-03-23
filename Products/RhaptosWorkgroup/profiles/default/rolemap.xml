@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<rolemap>
+  <permissions>
+    <permission name="Add workgroup folder"
+                acquire="True">
+      <role name="Manager"/>
+      <role name="Member"/>
+    </permission>
+  </permissions>
+</rolemap>
+
