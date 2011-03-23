@@ -11,6 +11,7 @@ from Products.CMFCore.utils import UniqueObject
 from Products.CMFCore.permissions import ManagePortal
 
 from Products.RhaptosWorkgroup.interfaces import IWorkgroupTool
+from Products.RhaptosWorkgroup.permissions import AddWorkgroupFolder
 
 class WorkgroupTool(UniqueObject, Folder):
     """ Tool to manage Rhaptos Workgroups
@@ -30,6 +31,10 @@ class WorkgroupTool(UniqueObject, Folder):
     security.declareProtected(ManagePortal, 'manage_config')
     manage_mapRoles = DTMLFile('workgroupconfig', _dtmldir )
 
+    def __init__(self, id=None):
+        super(Folder, self).__init__(id)
+        self._nextId = 0
+
     security.declarePublic('getWorkgroupsFolder')
     def getWorkgroupsFolder(self):
         """ Get the workgroups folder object.
@@ -37,5 +42,21 @@ class WorkgroupTool(UniqueObject, Folder):
         parent = aq_parent( aq_inner(self) )
         workgroups = getattr(parent, 'workgroups', None)
         return workgroups
+
+    security.declareProtected(AddWorkgroupFolder, 'createWorkgroupFolder')
+    def createWorkgroupFolder(self):
+        """ Create a workgroup folder
+        """
+        workgroups = self.getWorkgroupsFolder()
+        nextId = self._getNextId()
+        workgroups.invokeFactory(type_name='Workgroup', id=nextId)
+        return nextId
+
+    def _getNextId(self):
+        """ return the next id for a workgroup
+        """
+        self._nextId += 1
+        return 'wg%d' % self._nextId
+
 
 InitializeClass(WorkgroupTool)
