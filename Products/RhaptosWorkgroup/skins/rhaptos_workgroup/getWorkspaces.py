@@ -28,8 +28,9 @@ returnonly = returnonly or {'id': None, 'members':None, 'contents':None,
 returnonly['title'] = None  # title is required for sorting
 
 workspaces = []
+workgroups = portal.portal_workgroups.getWorkgroupsFolder()
 for g in groups:
-    gfolder = portal.workgroups.get(g.getGroupName())
+    gfolder = workgroups.get(g.getGroupName())
     if gfolder is None:
         continue
     groupname = g.getGroupName()
