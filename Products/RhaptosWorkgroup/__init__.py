@@ -9,7 +9,7 @@ Public License Version 2.1 (LGPL).  See LICENSE.txt for details.
 """
 
 from Products.CMFDefault import Portal
-from Products.CMFCore import utils, permissions
+from Products.CMFCore.permissions import AddPortalContent
 from Products.CMFCore.DirectoryView import registerDirectory
 
 from Products.Archetypes.public import process_types, listTypes
@@ -45,7 +45,7 @@ def initialize(context):
 
     utils.ContentInit(Workgroup.Workgroup.meta_type,
                       content_types = contentClasses,
-                      permission = permissions.AddPortalContent,
+                      permission = AddPortalContent,
                       extra_constructors = contentConstructors,
                       fti = Workgroup.factory_type_information).initialize(context)
     
