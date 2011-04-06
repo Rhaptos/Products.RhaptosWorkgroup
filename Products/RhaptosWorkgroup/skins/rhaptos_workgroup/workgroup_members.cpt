@@ -49,6 +49,7 @@ CNX note:
       <input type="hidden" name="delete:list" value="member"
 	tal:attributes="value python:context.portal_membership.getAuthenticatedMember().getId()"/>
       <input type="hidden" name="form.submitted" value="1" />
+      <input tal:replace="structure context/@@authenticator/authenticator" />
     </form>
 
     <h2 i18n:translate="heading_workgroup_members">Workgroup membership</h2>
@@ -234,6 +235,7 @@ CNX note:
 	       i18n:attributes="value value_remove_selected_users" />
 	
 	<input type="hidden" name="form.submitted" value="1" />
+	<input tal:replace="structure context/@@authenticator/authenticator" />
       </form>
 
     </div>

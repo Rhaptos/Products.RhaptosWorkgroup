@@ -165,6 +165,7 @@ CNX note:
             </div>
 
 	<input type="hidden" name="form.submitted" value="1" />
+	<input tal:replace="structure context/@@authenticator/authenticator" />
       </form>
     </div>
   </body>
