@@ -12,8 +12,18 @@
   </style>
 
   <body>
-    <div metal:fill-slot="main"
-         tal:define="home context/portal_membership/getHomeFolder;
+    <div metal:fill-slot="main" tal:define="isAnon context/portal_membership/isAnonymousUser">
+    <div tal:condition="isAnon" i18n:translate="text_log_in_for_work_areas">
+      <tal:nasty tal:define="dummy python:request.RESPONSE.redirect('login_form?came_from=manageworkgroups')"/>
+      <p>You must 
+        <span i18n:name="log_in">
+          <a href="/login_form" i18n:translate="label_log_in">Log in</a>
+        </span> to view your work areas.
+      </p>
+    </div>
+
+     <tal:user tal:condition="not:isAnon">
+      <tal:defs   tal:define="home context/portal_membership/getHomeFolder;
                      homeurl home/absolute_url;
                      workgroup_list context/getWorkspaces">
       <h1 i18n:translate="header_manage_wgs">Manage Workgroups</h1>
@@ -106,6 +116,8 @@ Workgroups</a>)</span>
       <div metal:use-macro="template/macros/create" />
       </tal:div>
 
+    </tal:defs>
+    </tal:user>
     </div>
   </body>
 
