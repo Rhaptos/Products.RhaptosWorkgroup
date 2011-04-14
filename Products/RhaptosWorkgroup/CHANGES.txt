@@ -1,3 +1,6 @@
+RhaptosWorkgroup-0.25
+  - manageworkgroups handle logout
+
 RhaptosWorkgroup-0.24
   - manageworkgroups optimization for short workgroup lists
 
