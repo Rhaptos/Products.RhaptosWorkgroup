@@ -1,3 +1,11 @@
+RhaptosWorkgroup-0.25
+  - manageworkgroups handle logout
+
+RhaptosWorkgroup-0.24
+  - manageworkgroups optimization for short workgroup lists
+
+RhaptosWorkgroup-0.23
+  - fix bad workgroup urls for rhaptos 
 RhaptosWorkgroup-0.22
   - generic setup refactor. Rhaptos 2.0 release
 
