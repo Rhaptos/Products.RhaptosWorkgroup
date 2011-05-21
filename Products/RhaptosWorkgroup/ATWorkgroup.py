@@ -26,6 +26,8 @@ from Products.ATContentTypes.content.base import ATCTOrderedFolder
 from Products.ATContentTypes.content.folder import ATFolderSchema
 from Products.ATContentTypes.lib.autosort import AutoOrderSupport
 from Products.ATContentTypes.interfaces import IATFolder
+from Products.RhaptosWorkgroup.interfaces import IWorkgroup
+from zope.interface import implements
 
 try:
     from Products.CMFBoardTab.config import forumname
@@ -66,6 +68,7 @@ finalizeATCTSchema(ATWGSchema)
 
 class ATWorkgroup(AutoOrderSupport, ATCTOrderedFolder):
     """A folder which can contain other items."""
+    implements(IWorkgroup)
 
     schema         =  ATWGSchema
 
