@@ -1,3 +1,6 @@
+RhaptosWorkgroup-0.26
+  - extended sword import support
+
 RhaptosWorkgroup-0.25
   - manageworkgroups handle logout
 
