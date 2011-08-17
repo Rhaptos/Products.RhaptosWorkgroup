@@ -199,7 +199,7 @@ CNX note:
             <tr tal:define="oddrow repeat/u/odd"
                 tal:attributes="class python:test(oddrow,'odd','even')">
               <tal:block tal:define="username u/getUserName;
-                                     fullname python:u.getProperty('fullname')">
+                                     fullname u/fullname">
                 <td class="checkbox">
                     <input type="checkbox"
                            class="noborder"
@@ -222,7 +222,7 @@ CNX note:
                 </td>
                 </tal:badauthor>
 
-                <td tal:define="email python:u.getProperty('email')">
+                <td tal:define="email u/email">
 		    <a href="#" tal:attributes="href string:mailto:${email}">
 		      <span tal:replace="email" />
                     </a>

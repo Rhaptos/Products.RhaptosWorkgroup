@@ -34,7 +34,7 @@
           <tal:loop tal:repeat="mid memberids">
             <li class="user"
                 tal:define="item                 python:context.desecured.getMemberById(mid);
-                            item_title_or_id     python:item.getProperty('fullname');
+                            item_title_or_id     item/fullname;
                             item_url             string:$portal_url/member_profile/$mid;">
               <strong>
                 <a href="" tal:content="item_title_or_id" tal:attributes="href item_url">User fullname</a>

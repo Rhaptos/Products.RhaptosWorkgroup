@@ -1,3 +1,6 @@
+RhaptosWorkgroup-0.27
+  - handle authors with member accounts that have gone away
+
 RhaptosWorkgroup-0.26
   - extended sword import support
 
